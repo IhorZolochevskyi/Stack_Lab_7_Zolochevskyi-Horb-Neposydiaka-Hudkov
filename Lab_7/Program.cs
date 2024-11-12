@@ -1,10 +1,14 @@
+using OpenTK;
+using OpenTK.Graphics;
+using OpenTK.Graphics.OpenGL;
+using OpenTK.Mathematics;
+
 namespace Lab_7
 {
     internal static class Program
     {
-        /// <summary>
-        ///  The main entry point for the application.
-        /// </summary>
+        
+
         [STAThread]
         static void Main()
         {
