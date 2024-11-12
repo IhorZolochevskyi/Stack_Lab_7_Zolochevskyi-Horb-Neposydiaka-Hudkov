@@ -92,7 +92,7 @@ namespace Lab_7
             }
             GL.End();
 
-            // Часовые метки и цифры
+            // Часовые метки
             for (int i = 0; i < 12; i++)
             {
                 double angle = MathHelper.DegreesToRadians(i * 30);
@@ -105,11 +105,7 @@ namespace Lab_7
                 GL.Vertex2(x1, y1);
                 GL.Vertex2(x2, y2);
                 GL.End();
-
-                // Рисуем цифры
-                DrawText((i == 0 ? 12 : i).ToString(), (float)Math.Cos(angle) * 8, (float)Math.Sin(angle) * 8);
             }
-
             GL.PopMatrix();
         }
 
@@ -132,8 +128,6 @@ namespace Lab_7
             DrawHand(secondAngle, 9, 0.1f);
         }
 
-
-
         private void DrawHand(float angle, float length, float width)
         {
             GL.PushMatrix();
@@ -148,30 +142,6 @@ namespace Lab_7
             GL.PopMatrix();
         }
 
-        private void DrawText(string text, float x, float y)
-        {
-            GL.PushMatrix();
-            GL.LoadIdentity();
-
-            GL.Translate(centerX + x, centerY + y, 0);
-
-            GL.Disable(EnableCap.DepthTest);
-            GL.Enable(EnableCap.Blend);
-            GL.BlendFunc(BlendingFactor.SrcAlpha, BlendingFactor.OneMinusSrcAlpha);
-
-            using (Graphics gfx = Graphics.FromHwnd(AnT.Handle))
-            {
-                gfx.TextRenderingHint = System.Drawing.Text.TextRenderingHint.AntiAlias;
-                using (Font font = new Font("Arial", 12))
-                {
-                    SizeF size = gfx.MeasureString(text, font);
-                    gfx.DrawString(text, font, Brushes.Black, new PointF(-size.Width / 2, -size.Height / 2));
-                }
-            }
-
-            GL.Disable(EnableCap.Blend);
-            GL.Enable(EnableCap.DepthTest);
-            GL.PopMatrix();
-        }
+        
     }
 }
