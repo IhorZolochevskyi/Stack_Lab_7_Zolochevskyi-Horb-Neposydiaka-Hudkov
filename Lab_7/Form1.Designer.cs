@@ -28,28 +28,38 @@
         /// </summary>
         private void InitializeComponent()
         {
-            glControl1 = new OpenTK.GLControl.GLControl();
+            components = new System.ComponentModel.Container();
+            AnT = new OpenTK.GLControl.GLControl();
+            PointInGraph = new System.Windows.Forms.Timer(components);
             SuspendLayout();
             // 
-            // glControl1
+            // AnT
             // 
-            glControl1.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
-            glControl1.APIVersion = new Version(3, 3, 0, 0);
-            glControl1.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
-            glControl1.IsEventDriven = true;
-            glControl1.Location = new Point(0, -3);
-            glControl1.Name = "glControl1";
-            glControl1.Profile = OpenTK.Windowing.Common.ContextProfile.Core;
-            glControl1.SharedContext = null;
-            glControl1.Size = new Size(788, 456);
-            glControl1.TabIndex = 0;
+            AnT.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
+            AnT.APIVersion = new Version(3, 3, 0, 0);
+            AnT.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
+            AnT.IsEventDriven = true;
+            AnT.Location = new Point(0, -5);
+            AnT.Margin = new Padding(4, 5, 4, 5);
+            AnT.Name = "AnT";
+            AnT.Profile = OpenTK.Windowing.Common.ContextProfile.Compatability;
+            AnT.SharedContext = null;
+            AnT.Size = new Size(1126, 760);
+            AnT.TabIndex = 0;
+            // 
+            // PointInGraph
+            // 
+            PointInGraph.Enabled = true;
+            PointInGraph.Interval = 1000;
+            PointInGraph.Tick += PointInGraph_Tick;
             // 
             // Form1
             // 
-            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleDimensions = new SizeF(10F, 25F);
             AutoScaleMode = AutoScaleMode.Font;
-            ClientSize = new Size(800, 450);
-            Controls.Add(glControl1);
+            ClientSize = new Size(1143, 750);
+            Controls.Add(AnT);
+            Margin = new Padding(4, 5, 4, 5);
             Name = "Form1";
             Text = "Form1";
             ResumeLayout(false);
@@ -57,6 +67,7 @@
 
         #endregion
 
-        private OpenTK.GLControl.GLControl glControl1;
+        private OpenTK.GLControl.GLControl AnT;
+        private System.Windows.Forms.Timer PointInGraph;
     }
 }
