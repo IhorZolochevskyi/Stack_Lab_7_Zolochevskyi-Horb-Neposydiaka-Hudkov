@@ -28,12 +28,44 @@
         /// </summary>
         private void InitializeComponent()
         {
-            this.components = new System.ComponentModel.Container();
-            this.AutoScaleMode = System.Windows.Forms.AutoScaleMode.Font;
-            this.ClientSize = new System.Drawing.Size(800, 450);
-            this.Text = "Form1";
+            components = new System.ComponentModel.Container();
+            AnT = new OpenTK.GLControl.GLControl();
+            PointInGraph = new System.Windows.Forms.Timer(components);
+            SuspendLayout();
+            // 
+            // AnT
+            // 
+            AnT.API = OpenTK.Windowing.Common.ContextAPI.OpenGL;
+            AnT.APIVersion = new Version(3, 3, 0, 0);
+            AnT.Flags = OpenTK.Windowing.Common.ContextFlags.Default;
+            AnT.IsEventDriven = true;
+            AnT.Location = new Point(-1, -1);
+            AnT.Name = "AnT";
+            AnT.Profile = OpenTK.Windowing.Common.ContextProfile.Compatability;
+            AnT.SharedContext = null;
+            AnT.Size = new Size(804, 451);
+            AnT.TabIndex = 0;
+            // 
+            // PointInGraph
+            // 
+            PointInGraph.Interval = 30;
+            PointInGraph.Tick += PointInGraph_Tick;
+            // 
+            // Form1
+            // 
+            AutoScaleDimensions = new SizeF(7F, 15F);
+            AutoScaleMode = AutoScaleMode.Font;
+            ClientSize = new Size(800, 450);
+            Controls.Add(AnT);
+            Name = "Form1";
+            Text = "Form1";
+            Load += Form1_Load;
+            ResumeLayout(false);
         }
 
         #endregion
+
+        private OpenTK.GLControl.GLControl AnT;
+        private System.Windows.Forms.Timer PointInGraph;
     }
 }
